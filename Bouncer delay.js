@@ -27,7 +27,7 @@ bouncer.effect=input=>{
 };
 function buildSample(time){
 	var master=0;
-	master+=Math.sin(time*7e7)*Math.max(0,1-(fract(time)*90))*.5;
+	master+=Math.sin(time*6e3)*Math.max(0,1-(fract(time)*90))*.5;
 	master=bouncer.effect(master);
 	return master;
 }
