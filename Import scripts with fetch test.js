@@ -5,6 +5,6 @@ fetch("https://gist.githubusercontent.com/AnastasiaDunbar/d75e19d93a5c439d818534
 	for(var master=0,loops=3,speed=6,i=0;i<loops;i++){
 		master+=([sine,saw,tri,pulse].read(time*(2**i)/4))(time*[1,3,6,4,8,6,7,10].read(time*speed*(2**i))*50)*(1-fract(time*speed));
 	}
-		return master/loops;
+	return master/loops;
 	};
 });});
