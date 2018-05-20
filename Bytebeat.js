@@ -24,7 +24,7 @@ function bytebeat(t){
       d=(14*t*t^t)%m*a,
       p=w/k&3,
       y=[3,3,4.7,2][p]*t/4,
-      h="IQNNNN!!]]!Q!IW]WQNN??!!W]WQNNN?".charCodeAt(w/2&15|p/3<<4)/33*t-t, //h,charCodeAt,w,2,15,p,3,4,33,t,t
+      h="IQNNNN!!]]!Q!IW]WQNN??!!W]WQNNN?".charCodeAt(w/2&15|p/3<<4)/33*t-t,
       s=y*.98%80+y%80+(w>>7&&a*((5*t%m*a&128)*(0x53232323>>w/4&1)+(d&127)*(0xa444c444>>w/4&1)*1.5+(d*w&1)+(h%k+h*1.99%k+h*.49%k+h*.97%k-64)*(4-a-a)));
   return s*s>>14?127:s;
 }
