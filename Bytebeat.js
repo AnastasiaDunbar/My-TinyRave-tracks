@@ -1,8 +1,10 @@
 function mod(a,b){return((a%b)+b)%b;}
 function fract(x){return((x%1)+1)%1;}
 function clamp(a,b,c){return Math.min(Math.max(a,b),c);}
+function mix(a,b,c){return(c*(b-a))+a;}
+function curveSmooth(x,a){var b=Math.pow(x*2,a)/2;if(x>.5){b=1-Math.pow(2-(x*2),a)/2;}return b;}
 
-var sampleRate=8000,volume=.7,clampMode=true;
+var sampleRate=8000,volume=.7,clampMode=true,linearInterpolation=true,crispiness=2; //[default=8000,11000,22000,32000,44000],0 to 1,[default=false,true],[false,true],1 to +Infinity.
 function bytebeat(t){
   /*
   w=t>>9,k=32,m=2048,a=1-t/m%1,d=(14*t*t
@@ -31,6 +33,7 @@ function bytebeat(t){
 
 function buildSample(time){
   time*=44100/48000; //Ed McManus, pls fix dis.
-  var x=clampMode ? clamp(bytebeat(Math.floor(time*sampleRate))/256,-1,1) : ((fract(bytebeat(Math.floor(time*sampleRate))/256)*2)-1);
-  return isFinite(x)?x*volume:0; //Firefox would mute audio from all tabs if the output is infinite.
+  var music=x => clampMode ? clamp(bytebeat(x)/256,-1,1) : ((fract(bytebeat(x)/256)*2)-1),
+      out=linearInterpolation ? mix(music(Math.floor(time*sampleRate)),music(Math.floor(time*sampleRate)+1),curveSmooth(fract(time*sampleRate),crispiness)) : music(Math.floor(time*sampleRate));
+  return isFinite(out)?out*volume:0; //Firefox would mute audio from all tabs if the output is infinite.
 }
