@@ -24,15 +24,15 @@ function buildSample(){
     master+=
       pow2(saw(time*noteHz(ca[i][0])),2)* //Synth.
       (1-(ca[i][1]/cb))* //Fade out.
-      clamps(ca[i][1]*10)* //Anti-click on push().
-      pow(fract(1-(stepTime/32)),.1)* //Anti-click when ab equals to 0.
+      clamps(ca[i][1]*10)* //Declick on push().
+      pow(fract(1-(stepTime/32)),.1)* //Declick when ab equals to 0.
       .5; //Volume.
     ca[i][1]+=1/sampleRate;
     if(ca[i][1]>=cb){
       ca.splice(i,1);
     }
   }
-  master*=pow(fract(stepTime/2),.4);
+  master*=pow(fract(stepTime/2),.6);
   master+=pow2(sin(pow(fract(1-(stepTime/2)),9.2)*60),.6)*(1-pow(fract(stepTime/2),2));
   
   bd+=(sin(time*30)*2)/sampleRate;
