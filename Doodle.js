@@ -32,7 +32,7 @@ function buildSample(){
       ca.splice(i,1);
     }
   }
-  master*=pow(fract(stepTime/2),.6);
+  master*=pow(fractSmooth(stepTime/2,.05),.6);
   master+=pow2(sin(pow(fract(1-(stepTime/2)),9.2)*60),.6)*(1-pow(fract(stepTime/2),2));
   
   bd+=(sin(time*30)*2)/sampleRate;
