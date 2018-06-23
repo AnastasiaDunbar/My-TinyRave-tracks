@@ -48,7 +48,7 @@ function buildSample(){
       ca.push([(ba[bb][0]+((Math.random()-.5)*.09))-12,0]);
     }
     
-    timer=mod(timer,timerLength);
+    timer=mod(timer,timerLength);if(timer===0){timer=timerLength;}
     step++;
   }
   time+=1/sampleRate;
