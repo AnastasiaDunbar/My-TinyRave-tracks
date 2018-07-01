@@ -1,4 +1,5 @@
-importScripts("https://gist.githubusercontent.com/AnastasiaDunbar/d75e19d93a5c439d8185343f1fd54da1/raw/c80855b132c29eab3e1f9c396a2a78d89b1bbe5f/TinyRave%2520functions.js");
+importScripts("https://rawgit.com/AnastasiaDunbar/d75e19d93a5c439d8185343f1fd54da1/raw/c80855b132c29eab3e1f9c396a2a78d89b1bbe5f/TinyRave%2520functions.js");
+var SAMPLE_RATE=48000; //SAMPLE_RATE is undefined outside of buildSample().
 var mySong = {
 	melody: [[A_4],[A_4,D_4,E_4],[A_4,C_SHARP_4,E_4],[A_1,A_4,C_SHARP_4,E_4,E_5]],
 	buildSample: function(time){
