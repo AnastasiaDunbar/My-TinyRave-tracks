@@ -32,7 +32,6 @@ function bytebeat(t){
 }
 
 function buildSample(time){
-  time*=44100/48000; //Ed McManus, pls fix dis.
   var music=x => clampMode ? clamp(Math.floor(bytebeat(x))/256,-1,1) : ((fract(Math.floor(bytebeat(x))/256)*2)-1),
       out=linearInterpolation ? mix(music(Math.floor(time*sampleRate)),music(Math.floor(time*sampleRate)+1),curveSmooth(fract(time*sampleRate),crispiness)) : music(Math.floor(time*sampleRate));
   return isFinite(out)?out*volume:0; //Firefox would mute audio from all tabs if the output is infinite.
