@@ -1,4 +1,5 @@
-importScripts("https://gist.githubusercontent.com/AnastasiaDunbar/d75e19d93a5c439d8185343f1fd54da1/raw/e2618269295dbac54cd8dfa941f9a06b42e76bcd/TinyRave%2520functions.js");
+importScripts("https://rawgit.com/AnastasiaDunbar/d75e19d93a5c439d8185343f1fd54da1/raw/e2618269295dbac54cd8dfa941f9a06b42e76bcd/TinyRave%2520functions.js");
+var SAMPLE_RATE=48000; //SAMPLE_RATE is undefined outside of buildSample().
 function inputSample(time){
   var m=[0,0];
   m[0]+=sin(1500*time)*pow(fract(-time*1.2),9);
