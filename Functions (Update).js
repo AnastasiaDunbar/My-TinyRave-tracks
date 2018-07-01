@@ -1,4 +1,4 @@
-importScripts("https://gist.githubusercontent.com/AnastasiaDunbar/d75e19d93a5c439d8185343f1fd54da1/raw/93ae0d764488038143723ccc1ccb01f6320e48f7/TinyRave%2520functions.js");
+importScripts("https://rawgit.com/AnastasiaDunbar/d75e19d93a5c439d8185343f1fd54da1/raw/40bbff8cd9a8a9703cb087a7eabed95610d4415c/TinyRave%2520functions.js");
 var speed = 2;
 var Bass={
 	//[note,start,end]
