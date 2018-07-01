@@ -1,5 +1,4 @@
 var st = 0; //Synth time (To avoid clicking.)
-SAMPLE_RATE *= 1.09; //Giving it a Wavepot pitch.
 function buildSample(time) {
   //Synth
   st += ((mod(floor(time*16),8)+1)*[500,500,700,600][mod(floor(time),4)])/SAMPLE_RATE;
