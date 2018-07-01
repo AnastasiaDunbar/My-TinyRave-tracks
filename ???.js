@@ -13,7 +13,7 @@ function read(array,index){return array[mod(Math.floor(index),array.length)];}
 const LOWPASS=0,HIGHPASS=1,BANDPASS=2;
 class Filter{
     constructor(mode){
-        this.cutoff=0.99;this.resonance=0;this.mode=mode;
+        this.cutoff=.99;this.resonance=0;this.mode=mode;
         this.b0=0;this.b1=0;this.b2=0;this.b3=0;
         this.feedbackAmount=0;this.cutoffMod=0;
     }
@@ -57,7 +57,7 @@ class PWMsynth{
 	process(){
 		var out=fract(this.time)>=this.currentWidth?1:-1;
 		this.time+=this.pitch/sampleRate;
-		if(this.time>1){
+		if(this.time>=1){
 			this.time=mod(this.time,1);
 			this.currentWidth=this.nextWidth;
 		}
@@ -81,7 +81,9 @@ function buildSample(time){
 		synths[i].setWidth(
 			mix(((pow2(Math.sin(time*Math.PI*(Math.pow(2,i)/16)),.75)+1)/2),.5,.1)
 		);
-		filters[i].setCutoff(mix(.5,.1,Math.pow(fractSmooth(time*Math.pow(2,3-(i%4)),.05),.6)));
+		filters[i].setCutoff(
+			mix(.5,.1,Math.pow(fractSmooth(time*Math.pow(2,3-(i%4)),.05),.6))
+		);
 		master+=filters[i].process(synths[i].process())/iterations;
 	}
 	return master*.2;
