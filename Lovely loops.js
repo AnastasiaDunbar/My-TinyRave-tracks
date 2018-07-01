@@ -1,5 +1,6 @@
 //https://www.youtube.com/watch?v=3Z8CuAC_-bg
-importScripts("https://gist.githubusercontent.com/AnastasiaDunbar/d75e19d93a5c439d8185343f1fd54da1/raw/acb278ad2cb662813166d7f04edbf053df1086fa/TinyRave%2520functions.js");
+importScripts("https://rawgit.com/AnastasiaDunbar/d75e19d93a5c439d8185343f1fd54da1/raw/acb278ad2cb662813166d7f04edbf053df1086fa/TinyRave%2520functions.js");
+var SAMPLE_RATE=48000; //SAMPLE_RATE is undefined outside of buildSample().
 
 function noteToDecimal(string){ //For noteHz(x).
 	string=string.replace(/\s/g,"");
