@@ -1,3 +1,4 @@
+var SAMPLE_RATE=48000; //SAMPLE_RATE is undefined outside of buildSample().
 //Example:
 var delay = FastDelay(1.5,0.6);
 var buildSample = function(time) {
