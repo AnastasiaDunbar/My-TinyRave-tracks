@@ -1,3 +1,4 @@
+var SAMPLE_RATE=48000; //SAMPLE_RATE is undefined outside of buildSample().
 var Sampleloops = SAMPLE_RATE*1.5;
 var savedSamples = [];
 var SampleAt = 0;
