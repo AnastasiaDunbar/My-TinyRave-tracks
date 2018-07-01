@@ -1,5 +1,6 @@
 importScripts("https://rawgit.com/AnastasiaDunbar/d75e19d93a5c439d8185343f1fd54da1/raw/4d5e5d91ec9b025b2585c5c3083cb1b6255456fc/TinyRave%2520functions.js");
 function buildSample(time){
+  time*=.85;
   var master=0;
   for(var i=0;i<4;i++){
     var s=time*pow(2,i+floor(prandom(floor(time*2))*2));
