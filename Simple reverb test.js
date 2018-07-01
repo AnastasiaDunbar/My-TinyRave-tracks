@@ -1,4 +1,4 @@
-importScripts("https://gist.githubusercontent.com/AnastasiaDunbar/d75e19d93a5c439d8185343f1fd54da1/raw/c80855b132c29eab3e1f9c396a2a78d89b1bbe5f/TinyRave%2520functions.js");
+importScripts("https://rawgit.com/AnastasiaDunbar/d75e19d93a5c439d8185343f1fd54da1/raw/40bbff8cd9a8a9703cb087a7eabed95610d4415c/TinyRave%2520functions.js");
 var delay=[];
 var filter=[];
 var count=30;
