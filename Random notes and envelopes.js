@@ -9,18 +9,18 @@ function inverseNoteHz(y){return(12*Math.log(y/55)+13*Math.LN2)/Math.LN2;}
 function cyclicSum(a,x){for(var s=0,i=0;i<a.length;i++){s+=a[i]*Math.floor((x+(a.length-i-1))/a.length);}return s+fract(x)*a[Math.floor(mod(x,a.length))];}
 function fractSmooth(x,a){return(a>0)?Math.max(1-(fract(x)/a),fract(x)):Math.min(fract(x),fract(-x)/-a);}
 var sine=x=>Math.sin(Math.PI*2*x),
-		saw=x=>(fract(x)*2)-1,
-		pulse=x=>fract(x)>0.5?-1:1,
-		tri=x=>(Math.abs(mod((x-0.25)*2,2)-1)*2)-1,
-		randSeed=[(Math.random()*2)-1,2e3+(Math.random()*7e3),2e3+(Math.random()*7e3),10+(Math.random()*90),10+(Math.random()*90)],
-		rand=x=>fract(Math.sin((x+randSeed[0])*randSeed[1])*randSeed[2]),
-		rand2=(x,y)=>fract(Math.sin(((x*randSeed[3])+(y*randSeed[4])+randSeed[0])*randSeed[1])*randSeed[2]);
+    saw=x=>(fract(x)*2)-1,
+    pulse=x=>fract(x)>0.5?-1:1,
+    tri=x=>(Math.abs(mod((x-0.25)*2,2)-1)*2)-1,
+    randSeed=[(Math.random()*2)-1,2e3+(Math.random()*7e3),2e3+(Math.random()*7e3),10+(Math.random()*90),10+(Math.random()*90)],
+    rand=x=>fract(Math.sin((x+randSeed[0])*randSeed[1])*randSeed[2]),
+    rand2=(x,y)=>fract(Math.sin(((x*randSeed[3])+(y*randSeed[4])+randSeed[0])*randSeed[1])*randSeed[2]);
 function catmullRomInterpolation(p0,p1,p2,p3,t){return((2*p1)+((-p0+p2)*t)+((2*p0-5*p1+4*p2-p3)*Math.pow(t,2))+((-p0+3*p1-3*p2+p3)*Math.pow(t,3)))/2;}
 
-var pickRandom=a=>a[Math.floor(Math.random()*a.length)];
-var voices=[];
-var oscillators=[tri,x=>pow2(sine(x),4),x=>fractSmooth(x,.05)-.5,x=>Math.sign(sine(x)+Math.sin(x*.05)),saw];
-var envelopes=[x=>Math.min(1-x,x*2e3),x=>Math.sin(Math.pow(x,.5)*Math.PI),x=>Math.min(x,(1-x)*40)];
+var pickRandom=a=>a[Math.floor(Math.random()*a.length)],
+    voices=[],
+    oscillators=[tri,x=>pow2(sine(x),4),x=>fractSmooth(x,.05)-.5,x=>Math.sign(sine(x)+Math.sin(x*.05)),saw],
+    envelopes=[x=>Math.min(1-x,x*2e3),x=>Math.sin(Math.pow(x,.5)*Math.PI),x=>Math.min(x,(1-x)*40)];
 
 var timer={init:1/8,value:0};
 
