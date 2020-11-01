@@ -2,7 +2,7 @@ importScripts("https://gist.githack.com/AnastasiaDunbar/d75e19d93a5c439d8185343f
 var strMatch=(s,r)=>(s.match(r)||[""])[0],
     objectMap=(o,f)=>Object.fromEntries(Object.entries(o).map(([k,v],i)=>[k,f(v,k,i)])),
     chordProgression=
-    "4Cmaj7 4D7/C 4Bm7 4Em7 4F#m7b5/A 2B7b5 2B7 2G69/E 2Em7 2Fmaj7/D 2Bm7b5/G 4C#m7b5 4Cm#7 3Bm7 5Em7 6Am9 2Am9/E 8D13 4Gadd9 2.5G6 1.5C#7b5" //“馬鹿みたい”
+    "4Cmaj7 4D7/C 4Bm7 4Em7 4F#m7b5/A 2B7b5 2B7 2G69/E 2Em7 2Dm9 2G9 4C#m7b5 4Cm#7 3Bm7 5Em7 6Am9 2Am9/E 8D13 4Gadd9 2.5G6 1.5C#7b5" //“馬鹿みたい”
     //"4Fmaj7 4Am7 4Dm7 4F7 4Bbmaj7 4Am7 4Gm7 4C7" //Common chord progression.
     //"3A#maj7 1Gm7/A# 2C 2Gm6 4Am7 4Dm" //Common chord progression.
     //"2Dmaj7 2B7 2Em7 2A7#5 2Dmaj9 2B9 2Em9 2A9#5" //Common chord progression.
