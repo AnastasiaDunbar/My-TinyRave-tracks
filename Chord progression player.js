@@ -2,20 +2,23 @@ importScripts("https://gist.githack.com/AnastasiaDunbar/d75e19d93a5c439d8185343f
 var strMatch=(s,r)=>(s.match(r)||[""])[0],
     objectMap=(o,f)=>Object.fromEntries(Object.entries(o).map(([k,v],i)=>[k,f(v,k,i)])),
     chordProgression=
+    "4Cmaj7 4D7/C 4Bm7 4Em7 4F#m7b5/A 2B7b5 2B7 2G69/E 2Em7 2Fmaj7/D 2Bm7b5/G 4C#m7b5 4Cm#7 3Bm7 5Em7 6Am9 2Am9/E 8D13 4Gadd9 2.5G6 1.5C#7b5" //“馬鹿みたい”
     //"4Fmaj7 4Am7 4Dm7 4F7 4Bbmaj7 4Am7 4Gm7 4C7" //Common chord progression.
     //"3A#maj7 1Gm7/A# 2C 2Gm6 4Am7 4Dm" //Common chord progression.
     //"2Dmaj7 2B7 2Em7 2A7#5 2Dmaj9 2B9 2Em9 2A9#5" //Common chord progression.
-    "2Dm 2C 2Bb 2F 2Gm7 2C7 2Fmaj7 2F7 2Bbmaj7 2Bbdim7 2Am7 2Abdim7 2Gm7 2Edim7 2Asus4 2A 6Bbmaj7 2A7#9 4Dm9 2Cm7 2F7 6Bbmaj7 2A7#5 8Dm 6Bbmaj7#11 2A7#9 4Dm9 2Cm 2F7 6Bbmaj7#11 2A7#5 6Dm 2A7#5" //“i” by x髥莏
+    //"2Dm 2C 2Bb 2F 2Gm7 2C7 2Fmaj7 2F7 2Bbmaj7 2Bbdim7 2Am7 2Abdim7 2Gm7 2Edim7 2Asus4 2A 6Bbmaj7 2A7#9 4Dm9 2Cm7 2F7 6Bbmaj7 2A7#5 8Dm 6Bbmaj7#11 2A7#9 4Dm9 2Cm 2F7 6Bbmaj7#11 2A7#5 6Dm 2A7#5" //“i” by x髥莏
     //"4Abmaj7 4Bb7/Ab 4Gm7b5 4C7 4Fm7 4Ab/Eb 2D7 2D7/F# Gm7 Gbm7 Fm7 Bb7" //“Ah-Choo”
     //"4F 4F7/D# 4Dm7 2Aaug/C# 2F/C 2Bdim 2A# 7Dm Dm/E 4F6 4F7/Eb 4Dm9 2A7/Db 2Fmaj7/C 2Dm6/9/B 2Fmaj13/Bb 7Dmadd2 Dm/E" //“Im Nin'Alu”
     //"4Dbmaj7 4C7 2Fm 2Em7 2Ebm7 2Ab7 4Bbm7 4Eb7 4Abmaj7 4Fm7 3Fm6 Fm7/Ab 2G7 2Fdim7/B 2Cm7 2Bm7 2Bbm7 2Eb 4Gm 4C 4Fm7 2Ebm7 2Ab7/C"
     //"Bmaj7 D7 Gmaj7 Bb13 2Ebmaj7 Am9 D7 Gmaj9 Bb13 Ebmaj7 F#7 2Bmaj7 Fm7 Bb7 2Ebmaj7 Am7 D7 2Gmaj9 C#m7 F#13 2Bmaj7 Fm9 Bb13 2Ebmaj7 C#madd11 F#7" //“Giant Steps”
+    //"4D#maj9 2A#69/D 2A#69/G 4D69/F# 2Dmaj9/B 2G69/E 4G69/A 4A69/D 2Amaj13/C# 2F#m11 1C#add9/F 1C#9sus4/F 2C#11/F 2A#m9 4C#69/D# 4Amaj7/F" //“Gotta Be Another Way”
+    //"1Am9/C 1Am9/A# 2Am11 2Emaj9/6/G# 1C#69/G# 1C#69 1C#69/F .5C#69/A# 2.5D69/B 2C69/A 2C6" //“Gotta Be Another Way”
     //"3Amaj7/F# 5Dmaj7/B 3Dm9 5A#maj7 3D#maj7/C 5G#maj7/F 3Abm9/G# 5Amaj9/C#" //Something I made.
-    //"4Gmaj9/E 4C9/13/D 4Dmaj7(9)/B 2Amaj7(9)/F# 2F#m6/9/11" //Something I made.
-    //"4Emaj7(9) 4Gdim7(b9)/Bb 4A69 4B9" //Something I made.
+    //"4Gmaj9/E 4C9/13/D 4Dmaj7/9/B 2Amaj7/9/F# 2F#m6/9/11" //Something I made.
+    //"4Emaj7/9 4Gdim7(b9)/Bb 4A69 4B9" //Something I made.
     .split(/\s+/g).map(
 	s=>{
-		var object={},t=strMatch(s,/^\d+/);object.length=+t||1;
+		var object={},t=strMatch(s,/^(\d*\.)?\d+/);object.length=+t||1;
 		s=s.slice(t.length);
 		t=strMatch(s,/^[A-G][b#]?/);object.note=t;
 		s=s.slice(t.length);
@@ -52,7 +55,7 @@ var strMatch=(s,r)=>(s.match(r)||[""])[0],
 	"m6/9/11":[3,7,9,10,14,17],
 	"7":[4,7,10],dom7:[4,7,10],
 	maj7:[4,7,11],
-	"maj7(9)":[4,7,11,14],
+	"maj7/9":[4,7,11,14],
 	m7:[3,7,10],
 	m7add11:[3,7,10,17],
 	m7add13:[3,7,10,21],
@@ -87,6 +90,7 @@ var strMatch=(s,r)=>(s.match(r)||[""])[0],
 	"7#9#11":[4,7,10,15,18],
 	"7b9b13":[4,7,8,10,13],
 	"7#9b13":[4,7,8,10,15],
+	"7b9#9":[4,7,10,13,15],
 	"7add11":[4,7,10,17],
 	"7#11":[4,7,10,18],
 	"7#11b9":[4,7,10,13,18],
@@ -96,6 +100,7 @@ var strMatch=(s,r)=>(s.match(r)||[""])[0],
 	"maj9#5":[4,8,11,14],
 	"maj9#11":[4,7,11,14,18],
 	maj9sus4:[5,7,11,14],
+	"maj9/6":[4,7,9,11,14],
 	m9:[3,7,10,14],
 	m9b5:[3,6,10,14],
 	"9/13":[4,7,9,10,14],"9add13":[4,7,9,10,14],
@@ -141,19 +146,18 @@ function findChords(notes){
 	return out;
 }
 //noteHz(49) is A4, 37 is A3, 25 is A2, 13 is A1, 1 is A0, 0 is G#0.
-var noteToNum=s=>({A:0,B:2,C:3,D:5,E:7,F:8,G:10}[s[0]])+({b:-1,"#":1}[s[1]]||0)+1,bpm=120,timer={value:0,i:0,end:chordProgression[0].length},
+var noteToNum=s=>({A:0,B:2,C:3,D:5,E:7,F:8,G:10}[s[0]])+({b:-1,"#":1}[s[1]]||0)+1,bpm=135,timer={value:0,i:0,end:chordProgression[0].length},
 chordRange=36,bassRange=8;
 function noteToRange(n,r){return mod(n-r,12)+r;}
 function buildSample(time){
 	var master=[0,0];
-	var current=chordProgression[timer.i],chord=chords[current.chord];
+	var current=chordProgression[timer.i],chord=chords[current.chord],t=time*(bpm/60);
 	for(var i=0;i<chord.length;i++){
 		master[i%2]+=saw(noteHz(noteToRange(noteToNum(current.note)+chord[i],chordRange))*time);
 	}
 	master[(1+floor(timer.value*8))%2]+=saw(noteHz(36+noteToNum(current.note)+chord.read(timer.value*8)+[0,12].read(timer.value*2))*time)/2;
-	var add=saw(noteHz(noteToRange(noteToNum(current.slash||current.note),bassRange)+[0,12].read(timer.value*2))*time),
-	    arp=chord.map(x=>noteToRange(noteToNum(current.note)+x,48)),
-	    t=time*(bpm/60);
+	var add=saw(noteHz(noteToRange(noteToNum(current.slash||current.note),bassRange)+[0,12].read(t*2))*time),
+	    arp=chord.map(x=>noteToRange(noteToNum(current.note)+x,48));
 	arp.sort((a,b)=>a-b);
 	add+=pulse(noteHz(arp.read([0,0,3,3,2,2,1,2,3,4,3,2,1,1,2,2].read(floor(t))))*time)/2;
 	//add+=pulse(noteHz(48+noteToNum(current.note)+chord.read([0,2,1,3].read(floor(timer.value*2))))*time)/2;
