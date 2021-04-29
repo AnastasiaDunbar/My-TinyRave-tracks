@@ -2,7 +2,9 @@ importScripts("https://gist.githack.com/AnastasiaDunbar/d75e19d93a5c439d8185343f
 var strMatch=(s,r)=>(s.match(r)||[""])[0],
     objectMap=(o,f)=>Object.fromEntries(Object.entries(o).map(([k,v],i)=>[k,f(v,k,i)])),
     chordProgression=
-    "4Cmaj7 4D7/C 4Bm7 4Em7 4F#m7b5/A 2B7b5 2B7 2G69/E 2Em7 2Dm9 2G9 4C#m7b5 4Cm#7 3Bm7 5Em7 6Am9 2Am9/E 8D13 4Gadd9 2.5G6 1.5C#7b5" //“馬鹿みたい”
+    "2Ebmaj7 2Gm7/Eb 2Dm7 2Gm7 2Eb/C 2Gm/C 2F Eb/F F" //Something I made, kept at a distance from the real thing.
+    //"4Gm11/C 4Ebm11/Ab 4Fm11 4Bbm11 4Am11 4Em11 4Dm11 4G13sus4" //Something I made.
+    //"4Cmaj7 4D7/C 4Bm7 4Em7 4F#m7b5/A 2B7b5 2B7 2G69/E 2Em7 2Dm9 2G9 4C#m7b5 4Cm#7 3Bm7 5Em7 6Am9 2Am9/E 8D13 4Gadd9 2.5G6 1.5C#7b5" //“馬鹿みたい”
     //"4Fmaj7 4Am7 4Dm7 4F7 4Bbmaj7 4Am7 4Gm7 4C7" //Common chord progression.
     //"3A#maj7 1Gm7/A# 2C 2Gm6 4Am7 4Dm" //Common chord progression.
     //"2Dmaj7 2B7 2Em7 2A7#5 2Dmaj9 2B9 2Em9 2A9#5" //Common chord progression.
@@ -16,6 +18,8 @@ var strMatch=(s,r)=>(s.match(r)||[""])[0],
     //"3Amaj7/F# 5Dmaj7/B 3Dm9 5A#maj7 3D#maj7/C 5G#maj7/F 3Abm9/G# 5Amaj9/C#" //Something I made.
     //"4Gmaj9/E 4C9/13/D 4Dmaj7/9/B 2Amaj7/9/F# 2F#m6/9/11" //Something I made.
     //"4Emaj7/9 4Gdim7(b9)/Bb 4A69 4B9" //Something I made.
+    //"4Em7 3A7/F# Dadd9 4Dadd9/A 2Am7/G 2D7/A" //Something I made.
+    //"4Bm11 4Eadd9 2Am7b5b9 2Am9 2D9 2D11/C" //Something I made.
     .split(/\s+/g).map(
 	s=>{
 		var object={},t=strMatch(s,/^(\d*\.)?\d+/);object.length=+t||1;
@@ -32,7 +36,7 @@ var strMatch=(s,r)=>(s.match(r)||[""])[0],
 ),chords=objectMap({
 	"":[4,7], //major
 	m:[3,7], //minor
-	aug:[4,8],
+	aug:[4,8],"+":[4,8],
 	augsus4:[5,8],
 	"(b5)":[4,6],majb5:[4,6],
 	dim:[3,6],mb5:[3,6],
@@ -44,6 +48,7 @@ var strMatch=(s,r)=>(s.match(r)||[""])[0],
 	add4:[4,5,7],add11:[4,7,17],
 	madd2:[2,3,7],madd9:[3,7,14],
 	madd4:[3,5,7],madd11:[3,7,17],
+	add24:[2,4,5,7],
 	"5":[7],
 	"6":[4,7,9],
 	"6add9":[4,7,9,14],
@@ -53,6 +58,7 @@ var strMatch=(s,r)=>(s.match(r)||[""])[0],
 	m69:[3,7,9,14],"m6/9":[3,7,9,14],
 	"69":[4,7,9,14],"6/9":[4,7,9,14],
 	"m6/9/11":[3,7,9,10,14,17],
+	"6/11":[4,5,7,9],
 	"7":[4,7,10],dom7:[4,7,10],
 	maj7:[4,7,11],
 	"maj7/9":[4,7,11,14],
@@ -62,9 +68,11 @@ var strMatch=(s,r)=>(s.match(r)||[""])[0],
 	maj7b5:[4,6,11],
 	m7b5:[3,6,10], //half-diminished
 	"m7#5":[3,8,10],
+	m7b5b9:[3,6,10,13],
 	m7b9:[1,3,7,10],
 	m7b13:[3,7,8,10],
 	"m7/6":[3,7,9,10],
+	"7/6":[4,7,9,10],
 	dim7:[3,6,9],tri:[3,6,9],
 	"dim7(b9)":[1,3,6,9],
 	maj7sus2:[2,7,11],
@@ -82,15 +90,16 @@ var strMatch=(s,r)=>(s.match(r)||[""])[0],
 	mmaj7add13:[3,7,11,21],
 	"7b5":[4,6,10],
 	"7b5b9":[4,6,10,13],
-	"7#5":[4,8,10],aug7:[4,8,10],
-	"7#5b9":[4,8,10,13],
-	"7#5#9":[4,8,10,15],
+	"7#5":[4,8,10],aug7:[4,8,10],"7aug5":[4,8,10],
+	"7#5b9":[4,8,10,13],"7aug5b9":[4,8,10,13],
+	"7#5#9":[4,8,10,15],"7aug5#9":[4,8,10,15],
 	"7b9":[4,7,10,13],
 	"7#9":[4,7,10,15],
 	"7#9#11":[4,7,10,15,18],
 	"7b9b13":[4,7,8,10,13],
 	"7#9b13":[4,7,8,10,15],
 	"7b9#9":[4,7,10,13,15],
+	"7add4":[4,5,7,10],
 	"7add11":[4,7,10,17],
 	"7#11":[4,7,10,18],
 	"7#11b9":[4,7,10,13,18],
@@ -130,6 +139,8 @@ var strMatch=(s,r)=>(s.match(r)||[""])[0],
 	mmaj13:[3,7,11,14,21]
 },x=>[0].concat(x));
 function findChords(notes){
+	//TODO: Detect key.
+	
 	if(!(Array.isArray(notes)&&notes.length>0)){return[];}
 	var minimum=Math.min(...notes),out=[];
 	notes=notes.map(x=>(x-minimum)%12);
@@ -146,8 +157,9 @@ function findChords(notes){
 	return out;
 }
 //noteHz(49) is A4, 37 is A3, 25 is A2, 13 is A1, 1 is A0, 0 is G#0.
-var noteToNum=s=>({A:0,B:2,C:3,D:5,E:7,F:8,G:10}[s[0]])+({b:-1,"#":1}[s[1]]||0)+1,bpm=135,timer={value:0,i:0,end:chordProgression[0].length},
-chordRange=36,bassRange=8;
+var pitchShift=0,
+noteToNum=s=>({A:0,B:2,C:3,D:5,E:7,F:8,G:10}[s[0]])+({b:-1,"#":1}[s[1]]||0)+1+pitchShift,bpm=115,timer={value:0,i:0,end:chordProgression[0].length},
+chordRange=33,bassRange=8;
 function noteToRange(n,r){return mod(n-r,12)+r;}
 function buildSample(time){
 	var master=[0,0];
@@ -155,7 +167,7 @@ function buildSample(time){
 	for(var i=0;i<chord.length;i++){
 		master[i%2]+=saw(noteHz(noteToRange(noteToNum(current.note)+chord[i],chordRange))*time);
 	}
-	master[(1+floor(timer.value*8))%2]+=saw(noteHz(36+noteToNum(current.note)+chord.read(timer.value*8)+[0,12].read(timer.value*2))*time)/2;
+	master[(1+floor(timer.value*8))%2]+=saw(noteHz(36+noteToNum(current.note)+chord.read(timer.value*8)+[0,12].read(timer.value*2))*time)/4;
 	var add=saw(noteHz(noteToRange(noteToNum(current.slash||current.note),bassRange)+[0,12].read(t*2))*time),
 	    arp=chord.map(x=>noteToRange(noteToNum(current.note)+x,48));
 	arp.sort((a,b)=>a-b);
