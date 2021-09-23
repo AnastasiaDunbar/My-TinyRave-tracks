@@ -21,7 +21,7 @@ var strMatch=(s,r)=>(s.match(r)||[""])[0],
     //"1Am9/C 1Am9/A# 2Am11 2Emaj9/6/G# 1C#69/G# 1C#69 1C#69/F .5C#69/A# 2.5D69/B 2C69/A 2C6" //“Gotta Be Another Way”
     //"3Amaj7/F# 5Dmaj7/B 3Dm9 5A#maj7 3D#maj7/C 5G#maj7/F 3Abm9/G# 5Amaj9/C#" //Something I made.
     //"4Gmaj9/E 4C9/13/D 4Dmaj7/9/B 2Amaj7/9/F# 2F#m6/9/11" //Something I made.
-    //"4Emaj7/9 4Gdim7(b9)/Bb 4A69 4B9" //Something I made.
+    //"4Emaj7/9 4Gdim7b9/Bb 4A69 4B9" //Something I made.
     //"4Em7 3A7/F# Dadd9 4Dadd9/A 2Am7/G 2D7/A" //Something I made.
     //"4Bm11 4Eadd9 2Am7b5b9 2Am9 2D9 2D11/C" //Something I made.
     .split(/\s+/g).map(
@@ -83,8 +83,12 @@ var strMatch=(s,r)=>(s.match(r)||[""])[0],
 	m7b6b11:[3,4,7,8,10],
 	"7/6":[4,7,9,10],
 	dim7:[3,6,9],tri:[3,6,9],
-	"dim7(b9)":[1,3,6,9],
+	"dim7b9":[1,3,6,9],
 	dim9:[3,6,10,14],
+	dimmaj7:[3,6,11],
+	dimmaj9:[3,6,11,14],
+	dimmaj11:[3,5,6,11],
+	dimmaj13:[3,6,9,11],
 	maj7sus2:[2,7,11],
 	maj7sus4:[5,7,11],
 	"maj7#5":[4,8,11],maj7aug5:[4,8,11],"maj7+5":[4,8,11],
